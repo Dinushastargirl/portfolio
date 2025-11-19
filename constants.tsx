@@ -4,8 +4,8 @@ import { ProjectData, TimelineEvent } from './types';
 import { BookOpen, Code, Briefcase, Trophy, Lightbulb, PenTool, Layers, Cpu, Globe, Rocket } from 'lucide-react';
 
 // Using placeholders that you can replace with your actual assets
-export const USER_PORTRAIT_MAIN = "https://picsum.photos/seed/dinusha1/800/800"; 
-export const USER_PORTRAIT_SIDE = "https://picsum.photos/seed/dinusha2/600/800";
+export const USER_PORTRAIT_MAIN = "https://postimg.cc/ftmLR7dV"; 
+export const USER_PORTRAIT_SIDE = "https://postimg.cc/ZCcWNLMP";
 
 export const CONTACT_INFO = {
   email: "dinushapushparajah@gmail.com",

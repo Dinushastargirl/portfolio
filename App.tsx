@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Scene3D from './components/Scene3D';
 import Taskbar from './components/Taskbar';
 import DesktopIcon from './components/DesktopIcon';
@@ -8,7 +8,7 @@ import LoginScreen from './components/LoginScreen';
 import DesktopBanner from './components/DesktopBanner';
 import { WindowType, WindowState } from './types';
 import { AnimatePresence, motion } from 'framer-motion';
-import { User, Briefcase, Cpu, Mail, Power } from 'lucide-react';
+import { User, Briefcase, Cpu, Mail, Power, Wifi, Battery, Signal } from 'lucide-react';
 
 // Import Pages
 import Home from './components/pages/Home';
@@ -17,6 +17,27 @@ import Projects from './components/pages/Projects';
 import Contact from './components/pages/Contact';
 
 type OSState = 'OFF' | 'LOGIN' | 'DESKTOP';
+
+// Mobile Status Bar Component
+const MobileStatusBar = () => {
+  const [time, setTime] = useState(new Date());
+
+  useEffect(() => {
+    const timer = setInterval(() => setTime(new Date()), 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="fixed top-0 left-0 right-0 h-8 flex items-center justify-between px-4 text-white z-50 font-medium text-xs md:hidden pointer-events-none">
+      <span>{time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+      <div className="flex items-center gap-2">
+        <Signal size={14} />
+        <Wifi size={14} />
+        <Battery size={16} />
+      </div>
+    </div>
+  );
+};
 
 const App: React.FC = () => {
   const [osState, setOsState] = useState<OSState>('LOGIN');
@@ -110,6 +131,9 @@ const App: React.FC = () => {
 
   return (
     <div className="relative w-screen h-screen overflow-hidden bg-black font-sans selection:bg-neon-pink selection:text-white">
+      {/* Mobile Status Bar */}
+      {osState === 'DESKTOP' && <MobileStatusBar />}
+
       {/* 3D Background */}
       <Scene3D />
 
@@ -136,42 +160,45 @@ const App: React.FC = () => {
               </div>
 
               {/* Quote */}
-              <div className="absolute bottom-20 left-0 right-0 text-center px-4 z-10">
-                <p className="text-white font-serif italic text-lg md:text-2xl tracking-wide drop-shadow-[0_0_8px_rgba(255,255,255,0.9)] text-shadow-white">
+              <div className="absolute bottom-24 md:bottom-20 left-0 right-0 text-center px-4 z-10">
+                <p className="text-white font-serif italic text-sm md:text-2xl tracking-wide drop-shadow-[0_0_8px_rgba(255,255,255,0.9)] text-shadow-white opacity-80 md:opacity-100">
                   "I can do all things through Christ who strengthens me"
                 </p>
               </div>
             </div>
 
-            {/* Desktop Banner */}
+            {/* Desktop Banner (Hidden on mobile) */}
             <DesktopBanner />
 
-            {/* Desktop Area */}
-            <div className="absolute top-0 left-0 right-0 bottom-14 p-6 grid grid-cols-1 auto-rows-min gap-4 md:grid-cols-[repeat(auto-fill,100px)] z-10">
-                <DesktopIcon 
-                label="About Me" 
-                icon={User} 
-                onClick={() => openWindow(WindowType.HOME)} 
-                color="from-neon-pink to-purple-600"
-                />
-                <DesktopIcon 
-                label="Journey" 
-                icon={Briefcase} 
-                onClick={() => openWindow(WindowType.JOURNEY)} 
-                color="from-neon-yellow to-orange-500"
-                />
-                <DesktopIcon 
-                label="Projects" 
-                icon={Cpu} 
-                onClick={() => openWindow(WindowType.PROJECTS)} 
-                color="from-neon-cyan to-blue-500"
-                />
-                <DesktopIcon 
-                label="Contact" 
-                icon={Mail} 
-                onClick={() => openWindow(WindowType.CONTACT)} 
-                color="from-neon-green to-emerald-600"
-                />
+            {/* Desktop Area / App Grid */}
+            {/* Mobile: Centered grid, Desktop: Left aligned grid */}
+            <div className="absolute top-12 md:top-0 left-0 right-0 bottom-20 p-4 md:p-6 z-10">
+                <div className="grid grid-cols-4 gap-2 md:grid-cols-[repeat(auto-fill,100px)] md:gap-4 md:auto-rows-min justify-items-center md:justify-items-start">
+                    <DesktopIcon 
+                        label="About Me" 
+                        icon={User} 
+                        onClick={() => openWindow(WindowType.HOME)} 
+                        color="from-neon-pink to-purple-600"
+                    />
+                    <DesktopIcon 
+                        label="Journey" 
+                        icon={Briefcase} 
+                        onClick={() => openWindow(WindowType.JOURNEY)} 
+                        color="from-neon-yellow to-orange-500"
+                    />
+                    <DesktopIcon 
+                        label="Projects" 
+                        icon={Cpu} 
+                        onClick={() => openWindow(WindowType.PROJECTS)} 
+                        color="from-neon-cyan to-blue-500"
+                    />
+                    <DesktopIcon 
+                        label="Contact" 
+                        icon={Mail} 
+                        onClick={() => openWindow(WindowType.CONTACT)} 
+                        color="from-neon-green to-emerald-600"
+                    />
+                </div>
             </div>
 
             {/* Windows Layer */}
@@ -193,7 +220,7 @@ const App: React.FC = () => {
                 ))}
             </AnimatePresence>
 
-            {/* Taskbar */}
+            {/* Taskbar / Dock */}
             <Taskbar 
                 openWindows={windows.map(w => w.id)} 
                 activeWindow={activeWindowId}

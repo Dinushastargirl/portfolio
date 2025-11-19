@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { User, ArrowRight, Lock } from 'lucide-react';
@@ -27,22 +28,22 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onUnlock }) => {
       initial={{ opacity: 0 }} 
       animate={{ opacity: 1 }}
       exit={{ opacity: 0, scale: 1.1 }}
-      className="absolute inset-0 z-[100] bg-black/60 backdrop-blur-xl flex flex-col items-center justify-center"
+      className="absolute inset-0 z-[100] bg-black/60 backdrop-blur-xl flex flex-col items-center justify-center p-4"
     >
-      <div className="flex flex-col items-center gap-6">
-        <div className="w-32 h-32 rounded-full p-1 bg-gradient-to-br from-neon-pink to-neon-cyan shadow-[0_0_40px_rgba(0,255,255,0.3)]">
+      <div className="flex flex-col items-center gap-6 w-full max-w-sm">
+        <div className="w-28 h-28 md:w-32 md:h-32 rounded-full p-1 bg-gradient-to-br from-neon-pink to-neon-cyan shadow-[0_0_40px_rgba(0,255,255,0.3)]">
             <img src={USER_PORTRAIT_MAIN} alt="User" className="w-full h-full rounded-full object-cover border-4 border-black" />
         </div>
         
-        <h2 className="text-2xl font-bold text-white tracking-wider">Dinusha Pushparajah</h2>
+        <h2 className="text-xl md:text-2xl font-bold text-white tracking-wider text-center">Dinusha Pushparajah</h2>
         
-        <form onSubmit={handleLogin} className="flex flex-col items-center gap-4 w-full max-w-xs">
+        <form onSubmit={handleLogin} className="flex flex-col items-center gap-4 w-full">
           <div className="relative w-full">
             <input 
               type="password" 
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="Enter Password (ABC1234)"
+              placeholder="Enter Password"
               className={`w-full bg-white/10 border ${error ? 'border-red-500 animate-shake' : 'border-white/20'} rounded-lg py-3 px-4 text-white placeholder-gray-400 focus:outline-none focus:border-neon-cyan transition-all text-center tracking-widest`}
               autoFocus
             />

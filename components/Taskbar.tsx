@@ -1,7 +1,8 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { WindowType } from '../types';
-import { User, Briefcase, Cpu, Mail, Power, Search } from 'lucide-react';
+import { User, Briefcase, Cpu, Mail, Power, Search, LayoutGrid } from 'lucide-react';
 import StartMenu from './StartMenu';
 
 interface TaskbarProps {
@@ -54,7 +55,8 @@ const Taskbar: React.FC<TaskbarProps> = ({ openWindows, activeWindow, onOpen, on
         </AnimatePresence>
       </div>
 
-      <div className="fixed bottom-0 left-0 right-0 h-14 bg-black/60 backdrop-blur-xl border-t border-white/10 flex items-center justify-between px-4 z-50 select-none">
+      {/* Desktop Taskbar */}
+      <div className="fixed bottom-0 left-0 right-0 h-14 bg-[#1a1b26]/80 backdrop-blur-xl border-t border-white/10 hidden md:flex items-center justify-between px-4 z-50 select-none">
         {/* Start Button & Search */}
         <div className="flex items-center gap-4">
           <motion.button 
@@ -66,13 +68,13 @@ const Taskbar: React.FC<TaskbarProps> = ({ openWindows, activeWindow, onOpen, on
             <div className="w-4 h-4 bg-white rounded-sm opacity-80" />
           </motion.button>
           
-          <div className="hidden md:flex items-center gap-2 bg-white/5 px-3 py-1.5 rounded-full border border-white/5 text-gray-400 hover:bg-white/10 transition-colors cursor-pointer" onClick={() => setStartMenuOpen(true)}>
+          <div className="flex items-center gap-2 bg-white/5 px-3 py-1.5 rounded-full border border-white/5 text-gray-400 hover:bg-white/10 transition-colors cursor-pointer" onClick={() => setStartMenuOpen(true)}>
             <Search size={14} />
             <span className="text-xs">Search</span>
           </div>
         </div>
 
-        {/* Dock */}
+        {/* Dock Icons */}
         <div className="flex items-center gap-2 absolute left-1/2 -translate-x-1/2">
           {apps.map((app) => {
             const isOpen = openWindows.includes(app.id);
@@ -85,19 +87,14 @@ const Taskbar: React.FC<TaskbarProps> = ({ openWindows, activeWindow, onOpen, on
                 whileHover={{ scale: 1.1, y: -5 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => onOpen(app.id)}
-                className={`relative w-10 h-10 md:w-12 md:h-12 rounded-xl flex items-center justify-center transition-all ${
+                className={`relative w-10 h-10 rounded-xl flex items-center justify-center transition-all ${
                   isActive ? 'bg-white/15 shadow-inner' : 'hover:bg-white/5'
                 }`}
               >
-                <Icon className={`${app.color}`} size={24} />
+                <Icon className={`${app.color}`} size={20} />
                 {isOpen && (
-                  <div className="absolute -bottom-1 w-1.5 h-1.5 bg-white rounded-full shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
+                  <div className="absolute -bottom-1 w-1 w-1 bg-white rounded-full shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
                 )}
-                
-                {/* Tooltip */}
-                <div className="absolute -top-10 opacity-0 hover:opacity-100 transition-opacity bg-black/80 px-2 py-1 rounded text-xs text-white pointer-events-none whitespace-nowrap">
-                  {app.label}
-                </div>
               </motion.button>
             );
           })}
@@ -105,11 +102,37 @@ const Taskbar: React.FC<TaskbarProps> = ({ openWindows, activeWindow, onOpen, on
 
         {/* System Tray */}
         <div className="flex items-center gap-4 text-xs font-mono text-gray-400">
-          <div className="hidden md:block text-right">
+          <div className="text-right">
             <div>{time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</div>
             <div className="text-[10px] opacity-60">{time.toLocaleDateString()}</div>
           </div>
         </div>
+      </div>
+
+      {/* Mobile Dock (iOS style) */}
+      <div className="fixed bottom-4 left-4 right-4 h-16 bg-black/60 backdrop-blur-2xl border border-white/10 rounded-2xl md:hidden flex items-center justify-around px-4 z-50 select-none shadow-2xl">
+         <motion.button 
+            whileTap={{ scale: 0.9 }}
+            onClick={() => setStartMenuOpen(!startMenuOpen)}
+            className="flex flex-col items-center gap-1"
+         >
+            <LayoutGrid size={24} className="text-white" />
+         </motion.button>
+
+         {apps.map((app) => {
+            const isActive = activeWindow === app.id;
+            const Icon = app.icon;
+            return (
+              <motion.button
+                key={app.id}
+                whileTap={{ scale: 0.9 }}
+                onClick={() => onOpen(app.id)}
+                className={`p-2 rounded-xl ${isActive ? 'bg-white/20' : ''}`}
+              >
+                <Icon className={`${app.color}`} size={24} />
+              </motion.button>
+            );
+          })}
       </div>
     </>
   );
