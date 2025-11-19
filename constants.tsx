@@ -6,6 +6,7 @@ import { BookOpen, Code, Briefcase, Trophy, Lightbulb, PenTool, Layers, Cpu, Glo
 // Using placeholders that you can replace with your actual assets
 export const USER_PORTRAIT_MAIN = "https://postimg.cc/ftmLR7dV"; 
 export const USER_PORTRAIT_SIDE = "https://postimg.cc/ZCcWNLMP";
+export const DESKTOP_WALLPAPER = "https://postimg.cc/ftmLR7dV";
 
 export const CONTACT_INFO = {
   email: "dinushapushparajah@gmail.com",
@@ -73,7 +74,7 @@ export const TIMELINE: TimelineEvent[] = [
   {
     year: "Current",
     title: "Hardware Product – One Dial",
-    description: "Currently building a hardware product called One Dial, which I am engineering from scratch to solve communication hurdles.",
+    description: "Currently building a hardware product called One Dial, which I am engineering from scratch to streamline communication.",
     icon: 'tech'
   },
   {
@@ -168,4 +169,33 @@ export const PROJECTS: ProjectData[] = [
     tech: ["Neon CSS", "JS Game Logic"],
     color: "border-cyan-400"
   }
+];
+
+export const QUALIFICATIONS = [
+  { title: "Google Certified UX Designer", issuer: "Google", date: "Jun 2023" },
+  { title: "Meta Certified Social Media Marketing Professional", issuer: "Meta", date: "Jun 2023" },
+  { title: "Critical Infrastructure Certification", issuer: "OPSWAT Academy" },
+  { title: "Introduction to Generative AI", issuer: "Google Cloud" },
+  { title: "Machine Learning Foundations", issuer: "AWS" },
+  { title: "Cyber Threat Intelligence 101", issuer: "ArcX" },
+  { title: "Game Design and Development", issuer: "American Embassy" },
+  { title: "Diploma in ICT", issuer: "Bandarawela Education Centre", date: "2018" },
+  { title: "AAT Level 1 & 2", issuer: "AAT" },
+  { title: "Cambridge English (Starters, Movers, Flyers, KET)", issuer: "Cambridge" },
+  { title: "Digital Marketing Certificate", issuer: "Hubspot Academy" },
+  { title: "Introduction to Front-End Development", issuer: "Meta", date: "Jun 2023" },
+  { title: "Programming with JavaScript", issuer: "Meta", date: "Jun 2023" },
+  { title: "Version Control", issuer: "Meta", date: "Jun 2023" },
+  { title: "HTML and CSS in depth", issuer: "Meta", date: "Jun 2023" },
+  { title: "Introduction to Back-End Development", issuer: "Meta", date: "Jun 2023" },
+  { title: "Full Stack Software Developer Assessment", issuer: "IBM", date: "Jun 2023" },
+  { title: "Ethical Hacking for Beginners", issuer: "Simplilearn", date: "Nov 2021" },
+  { title: "Design Thinking for Beginners", issuer: "Simplilearn", date: "Nov 2021" },
+  { title: "Introduction to Cyber Security", issuer: "Simplilearn", date: "Nov 2021" },
+  { title: "Digital Transformation", issuer: "Simplilearn", date: "Nov 2021" },
+  { title: "Introduction to Animation Fundamentals", issuer: "Simplilearn", date: "May 2024" },
+  { title: "Game-Theoretic Solution Concept", issuer: "Coursera Project Network", date: "Oct 2024" },
+  { title: "Create a Business Marketing Brand Kit", issuer: "Coursera Project Network", date: "Jun 2023" },
+  { title: "Get Started with Figma", issuer: "Coursera Project Network", date: "Jun 2023" },
+  { title: "Design and Develop a Website using Figma & CSS", issuer: "Coursera Project Network", date: "Jun 2023" }
 ];

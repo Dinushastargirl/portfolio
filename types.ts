@@ -1,3 +1,4 @@
+
 import { ReactNode } from 'react';
 
 export enum WindowType {
@@ -5,6 +6,7 @@ export enum WindowType {
   JOURNEY = 'JOURNEY',
   PROJECTS = 'PROJECTS',
   CONTACT = 'CONTACT',
+  QUALIFICATIONS = 'QUALIFICATIONS',
 }
 
 export interface WindowState {

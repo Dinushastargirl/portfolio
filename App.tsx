@@ -8,13 +8,15 @@ import LoginScreen from './components/LoginScreen';
 import DesktopBanner from './components/DesktopBanner';
 import { WindowType, WindowState } from './types';
 import { AnimatePresence, motion } from 'framer-motion';
-import { User, Briefcase, Cpu, Mail, Power, Wifi, Battery, Signal } from 'lucide-react';
+import { User, Briefcase, Cpu, Mail, Power, Wifi, Battery, Signal, FolderOpen, Award } from 'lucide-react';
+import { DESKTOP_WALLPAPER } from './constants';
 
 // Import Pages
 import Home from './components/pages/Home';
 import Journey from './components/pages/Journey';
 import Projects from './components/pages/Projects';
 import Contact from './components/pages/Contact';
+import Qualifications from './components/pages/Qualifications';
 
 type OSState = 'OFF' | 'LOGIN' | 'DESKTOP';
 
@@ -52,6 +54,7 @@ const App: React.FC = () => {
       case WindowType.JOURNEY: return <Journey />;
       case WindowType.PROJECTS: return <Projects />;
       case WindowType.CONTACT: return <Contact />;
+      case WindowType.QUALIFICATIONS: return <Qualifications />;
       default: return null;
     }
   };
@@ -62,6 +65,7 @@ const App: React.FC = () => {
       case WindowType.JOURNEY: return 'My Journey';
       case WindowType.PROJECTS: return 'Project Portfolio';
       case WindowType.CONTACT: return 'Contact';
+      case WindowType.QUALIFICATIONS: return 'Qualifications';
       default: return 'Window';
     }
   };
@@ -148,10 +152,10 @@ const App: React.FC = () => {
             
             {/* Wallpaper & Quote Layer */}
             <div className="absolute inset-0 z-0 pointer-events-none">
-              {/* Image 5.png */}
+              {/* Desktop Background Image */}
               <div className="absolute inset-0 opacity-60 mix-blend-overlay md:mix-blend-normal md:opacity-100">
                 <img 
-                  src="/5.png" 
+                  src={DESKTOP_WALLPAPER} 
                   alt="Desktop Background" 
                   className="w-full h-full object-cover"
                 />
@@ -197,6 +201,12 @@ const App: React.FC = () => {
                         icon={Mail} 
                         onClick={() => openWindow(WindowType.CONTACT)} 
                         color="from-neon-green to-emerald-600"
+                    />
+                    <DesktopIcon 
+                        label="Qualifications" 
+                        icon={Award} 
+                        onClick={() => openWindow(WindowType.QUALIFICATIONS)} 
+                        color="from-purple-500 to-pink-600"
                     />
                 </div>
             </div>
