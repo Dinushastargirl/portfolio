@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import Scene3D from './components/Scene3D';
 import Taskbar from './components/Taskbar';
@@ -120,11 +121,33 @@ const App: React.FC = () => {
 
       {osState === 'DESKTOP' && (
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="w-full h-full">
+            
+            {/* Wallpaper & Quote Layer */}
+            <div className="absolute inset-0 z-0 pointer-events-none">
+              {/* Image 5.png */}
+              <div className="absolute inset-0 opacity-60 mix-blend-overlay md:mix-blend-normal md:opacity-100">
+                <img 
+                  src="/5.png" 
+                  alt="Desktop Background" 
+                  className="w-full h-full object-cover"
+                />
+                {/* Vignette to ensure text/icons pop */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/40" />
+              </div>
+
+              {/* Quote */}
+              <div className="absolute bottom-20 left-0 right-0 text-center px-4 z-10">
+                <p className="text-white font-serif italic text-lg md:text-2xl tracking-wide drop-shadow-[0_0_8px_rgba(255,255,255,0.9)] text-shadow-white">
+                  "I can do all things through Christ who strengthens me"
+                </p>
+              </div>
+            </div>
+
             {/* Desktop Banner */}
             <DesktopBanner />
 
             {/* Desktop Area */}
-            <div className="absolute top-0 left-0 right-0 bottom-14 p-6 grid grid-cols-1 auto-rows-min gap-4 md:grid-cols-[repeat(auto-fill,100px)] z-0">
+            <div className="absolute top-0 left-0 right-0 bottom-14 p-6 grid grid-cols-1 auto-rows-min gap-4 md:grid-cols-[repeat(auto-fill,100px)] z-10">
                 <DesktopIcon 
                 label="About Me" 
                 icon={User} 
