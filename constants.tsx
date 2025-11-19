@@ -1,6 +1,7 @@
+
 import React from 'react';
 import { ProjectData, TimelineEvent } from './types';
-import { BookOpen, Code, Briefcase, Trophy, Lightbulb } from 'lucide-react';
+import { BookOpen, Code, Briefcase, Trophy, Lightbulb, PenTool, Layers, Cpu, Globe, Rocket } from 'lucide-react';
 
 // Using placeholders that you can replace with your actual assets
 export const USER_PORTRAIT_MAIN = "https://picsum.photos/seed/dinusha1/800/800"; 
@@ -28,46 +29,64 @@ export const SKILLS = [
 
 export const TIMELINE: TimelineEvent[] = [
   {
-    year: "Present",
-    title: "Hardware Product Engineering",
-    description: "Currently engineering 'One Dial', a hardware product designed to solve daily communication problems.",
-    icon: 'tech'
-  },
-  {
-    year: "2025 - 2026",
-    title: "Higher Diploma in AI & Data Science",
-    description: "Started focusing on advanced data concepts and AI models after completing web projects like Goya.",
-    icon: 'education'
-  },
-  {
-    year: "Aug 2024",
-    title: "BSc Computer Science (Scholarship)",
-    description: "University of the People. Awarded scholarship to pursue formal Computer Science education.",
-    icon: 'education'
-  },
-  {
-    year: "2024",
-    title: "Web Developer @ DC Group",
-    description: "Pivoted from Content Creator to Developer. Built 'Color Her' (Multilac) and 'Goya Spin the Wheel' campaigns.",
+    year: "Origin",
+    title: "Content Writer – First Opportunity",
+    description: "I started my career as a content writer. My boss noticed my curiosity and gave me the chance to learn about development and programming stacks.",
     icon: 'work'
   },
   {
-    year: "2024",
-    title: "Undergraduate IT",
-    description: "Started Information Technology degree at Colombo University.",
-    icon: 'education'
+    year: "Transition",
+    title: "Web Developer – First Experience",
+    description: "I transitioned into web development and started building websites professionally, laying the groundwork for my technical career.",
+    icon: 'tech'
   },
   {
     year: "2023",
     title: "UX/UI Internship",
-    description: "Gained practical design experience. Faced challenges securing full-time roles due to degree requirements, fueling the drive to upskill.",
+    description: "Completed a UX/UI internship in 2023 to improve my design skills. Unfortunately, I couldn’t secure a job afterward because I didn’t have a degree yet.",
     icon: 'work'
   },
   {
-    year: "Career Origin",
-    title: "Content Writer & Creator",
-    description: "Started after ALs. Given opportunity to learn development stacks by leadership, sparking the transition to Web Development.",
+    year: "2024",
+    title: "Back to Content Writing",
+    description: "Returned briefly to content writing, but it didn’t work out. I decided to focus on formal education to bridge the gap.",
     icon: 'work'
+  },
+  {
+    year: "2024",
+    title: "University Degree – Colombo University",
+    description: "Started my Computer Science degree at Colombo University, aiming to strengthen my technical foundation.",
+    icon: 'education'
+  },
+  {
+    year: "2024",
+    title: "Content Creator – DC Group",
+    description: "Began as a content creator at DC Group. My leaders noticed my talent in creating websites, giving me the opportunity to work on real projects.",
+    icon: 'work'
+  },
+  {
+    year: "Milestone",
+    title: "Key Projects Published",
+    description: "Published www.multilaccolorher.com for Women’s Day campaign and www.goyacompetition.com. Other projects allowed me to learn, build, and experiment with new solutions.",
+    icon: 'tech'
+  },
+  {
+    year: "Current",
+    title: "Hardware Product – One Dial",
+    description: "Currently building a hardware product called One Dial, which I am engineering from scratch to solve communication hurdles.",
+    icon: 'tech'
+  },
+  {
+    year: "2025",
+    title: "Higher Diploma in AI & Data Science",
+    description: "Started a Higher Diploma in AI & Data Science. Received a scholarship around August through UoPeople for Computer Science.",
+    icon: 'education'
+  },
+  {
+    year: "Vision Today",
+    title: "Problem Solver & Builder",
+    description: "Now I am focused on becoming a problem-solving professional, building solutions as products to solve real-world challenges.",
+    icon: 'tech'
   }
 ];
 
